@@ -1,18 +1,27 @@
-# Playwright Login & Register Test Suite
 
-This repository contains automated end-to-end tests for login, registration, and authentication flows using [Playwright](https://playwright.dev/).
+# Playwright E2E & API Test Suite
+
+This repository contains automated end-to-end and API tests using [Playwright](https://playwright.dev/).
 
 ## Test Summary
 
-- **Register User**: Registers a new user with random details on automationexercise.com, verifies account creation, and deletes the account.
-- **Successful Login**: Logs in to saucedemo.com with valid credentials, adds a Sauce Labs Backpack to the cart, and completes the checkout process.
-- **Unsuccessful Login**: Attempts to log in to saucedemo.com with invalid credentials (wrong password or username) and asserts that the correct error message is displayed. Takes a screenshot of the error state for debugging.
-- **Logout**: Logs in to saucedemo.com, logs out via the menu, and verifies that the user is returned to the login screen.
-- **Register With Existing Email**: Attempts to register a user with an email that already exists and verifies the application's response.
+### UI Tests
+- **Register User** (`tests/Login & Register/1.register-user.test.js`): Registers a new user with random details on [automationexercise.com](https://automationexercise.com), verifies account creation, and deletes the account.
+- **Successful Login** (`tests/Login & Register/2.successful-login.test.js`): Logs in to [saucedemo.com](https://www.saucedemo.com/) with valid credentials and verifies login.
+- **Unsuccessful Login** (`tests/Login & Register/3.unsuccessful-login.test.js`): Attempts to log in to saucedemo.com with invalid credentials and asserts the correct error message. Takes a screenshot of the error state for debugging.
+- **Logout** (`tests/Login & Register/4.logout.test.js`): Logs in to saucedemo.com, logs out via the menu, and verifies that the user is returned to the login screen.
+- **Purchase All Items Under $16** (`tests/Purchases & Checkout/1.purchase-multiple items.test.js`): Logs in, adds all items under $16 to the cart, verifies cart and totals, completes checkout, and logs out.
+
+### API Tests
+- **User Lifecycle Test** (`tests/API/1,basic-API.test.js`):
+  - [View API in browser](https://mockapi.io/projects/688b6f6a2a52cabb9f51b8d0)
+  - [Direct API endpoint](https://688b6f6a2a52cabb9f51b8cf.mockapi.io/api/rm/v1/users)
+  - Generates a random user, checks user count, POSTs the user, verifies the count increases, then deletes the user and checks the count returns to original.
 
 ## Structure
-- All tests are located in the `tests/Login & Register/` directory.
-- Screenshots for failed login attempts are saved in the `screenshots/` folder.
+- UI tests: `tests/Login & Register/` and `tests/Purchases & Checkout/`
+- API tests: `tests/API/`
+- Screenshots for failed login attempts: `screenshots/`
 - Authentication state is managed using Playwright's global setup for efficient test execution.
 
 ## How to Run
@@ -26,7 +35,7 @@ This repository contains automated end-to-end tests for login, registration, and
    ```
 3. Run a specific test:
    ```sh
-   npx playwright test tests/Login\ \&\ Register/3.unsuccessful-login.test.js
+   npx playwright test tests/API/1,basic-API.test.js
    ```
 4. Debug a test:
    ```sh
