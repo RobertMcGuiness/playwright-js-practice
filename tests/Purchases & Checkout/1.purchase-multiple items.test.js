@@ -1,4 +1,3 @@
-
 // Test: Purchase all items under $16, verify cart and totals, complete checkout, and log out
 
 // 1. Login using config (global storage state)
